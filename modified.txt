@@ -1,0 +1,11 @@
+1. cmd_si 中判断args是否能成功转换为int， 否的话打印usage并停止向下运行
+2. cmd_info中判断args是否为空，并提醒usage
+3. 修改bne指令bug （int target_offset = (op_src1->val != reg_w(op_dest->reg)) ? 	offset : 	0;）
+4. 修复sub指令bug（uint32_t temp_result = op_src1->val - op_src2->val;）
+5. 修复div指令bug（uint32_t改为int）
+6. 修复srlv指令bug（reg_w(op_dest->reg) = op_src2->val >> ((op_src1->val << (32 - 	RS_SIZE)) >> (32 - RS_SIZE));）
+7. 修复beq指令bug（类似bne，将opdest_val改为reg_w(op_dest->reg)）
+8. 修复bgtz指令bug（int target_offset = ((int)op_src1->val > 0) ? offset : 0;）
+9. 修复blez指令bug（int target_offset = ((int)op_src1->val <= 0) ? offset : 0;）
+10. 修复bgezal、bltzal指令bug（类似上面错误）
+11. 修复lb、lbu、lh、lhu、lw、sb、sh、sw指令bug（vaddr &= 0x1fffffff;）
